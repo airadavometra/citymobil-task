@@ -3,6 +3,7 @@ import { CarsData } from "components/CarsData/CarsData";
 import React, { FunctionComponent, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { carsActions } from "store/slices";
+import { filterActions } from "store/slices/filter";
 
 export const CarsDataContainer: FunctionComponent = () => {
   const state = useAppSelector((state) => state);
@@ -20,6 +21,8 @@ export const CarsDataContainer: FunctionComponent = () => {
       cars={state.cars.cars}
       tariffs={state.cars.tariffs}
       sort={(sortFunction: any) => dispatch(carsActions.sort(sortFunction))}
+      setFilter={(filter: string) => dispatch(filterActions.setFilter(filter))}
+      filter={state.filter.filter}
     />
   );
 };

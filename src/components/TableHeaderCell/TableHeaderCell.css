@@ -1,0 +1,13 @@
+.tableHeaderCellWithIcon {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  background-color: transparent;
+  border: none;
+  color: #7b8395;
+}
+
+.tableHeaderCell {
+  font-weight: 400;
+}

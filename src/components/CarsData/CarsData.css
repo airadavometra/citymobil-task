@@ -19,6 +19,7 @@
   border: none;
 }
 .searchInput {
+  padding-left: 40px;
   flex-grow: 1;
   border: 1px solid #dee5eb;
   background-image: url(/src/icons/search.svg);
@@ -26,11 +27,13 @@
   background-repeat: no-repeat;
 }
 .searchInput::placeholder {
-  padding-left: 40px;
   color: #7b8395;
 }
-.tableSection {
-  margin-bottom: 16px;
+.selectionSection {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #dee5eb;
+  font-weight: 600;
 }
 .table {
   width: 100%;
@@ -41,14 +44,6 @@
   padding: 16px;
   border: 1px solid #c6d1dd;
 }
-.tableHeaderCell {
-  font-weight: 400;
-}
 .tableBodyCell {
   color: #2d303b;
-}
-.tableHeaderCellWithIcon {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
 }
