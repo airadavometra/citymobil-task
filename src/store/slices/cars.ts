@@ -1,8 +1,8 @@
-import { CarInfo } from "../../types/carInfo";
+import { Car } from "../../types/car";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface State {
-  cars: CarInfo[];
+  cars: Car[];
   tariffs: string[];
 }
 
@@ -15,9 +15,6 @@ const slice = createSlice({
   name: "cars",
   initialState,
   reducers: {
-    sort: (state, { payload: sortFunction }) => {
-      state.cars.sort(sortFunction);
-    },
     addCars: (state, { payload: newCars }) => {
       state.cars.push(...newCars);
     },

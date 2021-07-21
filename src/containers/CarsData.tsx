@@ -4,6 +4,7 @@ import React, { FunctionComponent, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { carsActions } from "store/slices";
 import { filterActions } from "store/slices/filter";
+import { sortActions } from "store/slices/sortParameters";
 
 export const CarsDataContainer: FunctionComponent = () => {
   const state = useAppSelector((state) => state);
@@ -12,7 +13,8 @@ export const CarsDataContainer: FunctionComponent = () => {
   useEffect(() => {
     getCars().then((json) => {
       dispatch(carsActions.addTafiffs(json.tariffs_list));
-      dispatch(carsActions.addCars(json.cars));
+      dispatch(carsActions.addCars(json.convertedCars));
+      dispatch(sortActions.setKey("name"));
     });
   }, [dispatch]);
 
@@ -20,9 +22,17 @@ export const CarsDataContainer: FunctionComponent = () => {
     <CarsData
       cars={state.cars.cars}
       tariffs={state.cars.tariffs}
-      sort={(sortFunction: any) => dispatch(carsActions.sort(sortFunction))}
-      setFilter={(filter: string) => dispatch(filterActions.setFilter(filter))}
       filter={state.filter.filter}
+      sortKey={state.sortParameters.key}
+      sortIsAscending={state.sortParameters.isAscending}
+      setFilter={(filter: string) => dispatch(filterActions.setFilter(filter))}
+      onTableHeadClick={(key: string) => {
+        if (state.sortParameters.key === key) {
+          dispatch(sortActions.toggleDirection());
+        } else {
+          dispatch(sortActions.setKey(key));
+        }
+      }}
     />
   );
 };

@@ -1,24 +1,37 @@
 import classNames from "classnames";
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import "./TableHeaderCell.css";
 import sortIcon from "../../icons/sort.svg";
 
 export interface TableHeaderCellProps {
   text: string;
-  sort(sortFunction: any): void;
+  sortKey: string;
+  isSorted: boolean;
+  isAscending: boolean;
+  onCellClick(sortFunction: any): void;
 }
 
 export const TableHeaderCell: FunctionComponent<TableHeaderCellProps> = ({
   text,
-  sort,
+  sortKey,
+  isSorted,
+  isAscending,
+  onCellClick,
 }) => {
   return (
     <th className={classNames("tableHeaderCell", "tableCell")}>
       <button
         className="tableHeaderCellWithIcon"
-        onClick={() => sort(() => {})}
+        onClick={() => onCellClick(sortKey)}
       >
-        {text} <img src={sortIcon} alt="sort icon" />
+        {text}{" "}
+        {isSorted && (
+          <img
+            className={classNames({ flipped: isAscending })}
+            src={sortIcon}
+            alt="sort icon"
+          />
+        )}
       </button>
     </th>
   );

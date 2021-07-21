@@ -1,38 +1,30 @@
 import classNames from "classnames";
 import { TableHeaderCell } from "components/TableHeaderCell/TableHeaderCell";
 import React, { FunctionComponent, useState } from "react";
-import { CarInfo } from "types/carInfo";
+import { Car } from "types/car";
 import "./CarsData.css";
 
 export interface CarsDataProps {
-  cars: CarInfo[];
+  cars: Car[];
   tariffs: string[];
   filter: string;
-  sort(sortFunction: any): void;
+  sortKey: string;
+  sortIsAscending: boolean;
   setFilter(filter: string): void;
+  onTableHeadClick(key: string): void;
 }
 
 export const CarsData: FunctionComponent<CarsDataProps> = ({
   cars,
   tariffs,
   filter,
-  sort,
+  sortKey,
+  sortIsAscending,
   setFilter,
+  onTableHeadClick,
 }) => {
   const [selectedCar, setSelectedCar] = useState("");
   const [localFilter, setLocalFilter] = useState("");
-  const [sortedColumn, setSortedColumn] = useState("");
-  const [sortDirection, setSortDirection] = useState(false); // false - ascending, true - descending
-
-  const sortFunction = (sortedColumnName: string) => {
-    if (sortedColumnName === sortedColumn) {
-      setSortDirection(!sortDirection);
-    } else {
-      setSortedColumn(sortedColumnName);
-      setSortDirection(false);
-    }
-    sort((a: any, b: any) => {});
-  };
 
   return (
     <div className="carsData">
@@ -51,34 +43,50 @@ export const CarsData: FunctionComponent<CarsDataProps> = ({
       </section>
       <section className="tableSection">
         <table className="table">
-          <thead>
+          <thead className="tableHead">
             <tr>
-              <TableHeaderCell text="Марка и модель" sort={sort} />
+              <TableHeaderCell
+                text="Марка и модель"
+                sortKey="name"
+                onCellClick={onTableHeadClick}
+                isAscending={sortIsAscending}
+                isSorted={sortKey === "name"}
+              />
               {tariffs.map((tariff, index) => (
-                <TableHeaderCell key={index} text={tariff} sort={sort} />
+                <TableHeaderCell
+                  key={index}
+                  text={tariff}
+                  sortKey={tariff}
+                  onCellClick={onTableHeadClick}
+                  isAscending={sortIsAscending}
+                  isSorted={sortKey === tariff}
+                />
               ))}
             </tr>
           </thead>
           <tbody>
             {cars
-              .filter(
-                (item) =>
-                  item.mark.includes(filter) || item.model.includes(filter)
-              )
+              .filter((item) => String(item.name).includes(filter))
+              .sort((a, b) => {
+                if (sortIsAscending) {
+                  //@ts-ignore
+                  return a[sortKey] <= b[sortKey] ? -1 : 1;
+                } else {
+                  //@ts-ignore
+                  return a[sortKey] >= b[sortKey] ? -1 : 1;
+                }
+              })
               .map((car, index) => (
                 <tr
                   key={index}
-                  onClick={() => setSelectedCar(`${car.mark} ${car.model}`)}
+                  onClick={() => setSelectedCar(car.name as string)}
                 >
-                  <td
-                    className={classNames("tableBodyCell", "tableCell")}
-                  >{`${car.mark} ${car.model}`}</td>
-                  {tariffs.map((tariff, index) => (
+                  {Object.keys(car).map((key, index) => (
                     <td
-                      className={classNames("tableBodyCell", "tableCell")}
                       key={index}
+                      className={classNames("tableBodyCell", "tableCell")}
                     >
-                      {car.tariffs[tariff]?.year ?? "-"}
+                      {car[key] ?? "-"}
                     </td>
                   ))}
                 </tr>

@@ -11,3 +11,6 @@
 .tableHeaderCell {
   font-weight: 400;
 }
+.flipped {
+  transform: rotate(180deg);
+}
