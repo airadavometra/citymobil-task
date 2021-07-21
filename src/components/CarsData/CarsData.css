@@ -1,0 +1,30 @@
+.carsData {
+  padding: 32px;
+  background-color: #f0f2f488;
+}
+.filterSection {
+  display: flex;
+  flex-direction: row;
+}
+.searchButton {
+  margin-left: 8px;
+  padding: 13px 65px;
+  color: white;
+  background-color: #7b8395;
+  border: none;
+}
+.searchInput {
+  flex-grow: 1;
+  border: 1px solid #dee5eb;
+  background-image: url(/src/icons/search.svg);
+  background-position: 13px center;
+  background-repeat: no-repeat;
+}
+.searchInput::placeholder {
+  padding-left: 40px;
+  color: #7b8395;
+}
+
+.table {
+  grid-area: table;
+}

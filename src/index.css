@@ -6,8 +6,8 @@ html {
   --green: #4cbb17;
   --text-color: var(--white);
   --background-color: var(--black);
-  --simple-text-font: "Cutive Mono", monospace;
-  --header-font: "Citymobil_v0-2";
+  --simple-text-font: "IBM Plex Mono", monospace;
+  --header-font: "Montserrat";
 }
 
 body,
