@@ -1,0 +1,11 @@
+.main {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 16% 84%;
+  grid-template-rows: 12% 76% 12%;
+  grid-template-areas:
+    "header header"
+    "sidebar table"
+    "footer footer";
+  gap: 0;
+}

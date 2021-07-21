@@ -1,0 +1,47 @@
+html {
+  --black: #333;
+  --white: #e4e4e4;
+  --pink: #ff46a2;
+  --red: #f03;
+  --green: #4cbb17;
+  --text-color: var(--white);
+  --background-color: var(--black);
+  --simple-text-font: "Cutive Mono", monospace;
+  --header-font: "Citymobil_v0-2";
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+li,
+pre {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  cursor: pointer;
+}
+
+body {
+  font-family: var(--simple-text-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1 {
+  color: #707070;
+  font-family: var(--header-font);
+  font-size: clamp(24px, 3vw, 36px);
+  text-transform: lowercase;
+  text-align: center;
+}

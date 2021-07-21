@@ -1,0 +1,19 @@
+.sectionContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section {
+}
+.header {
+  grid-area: header;
+  background-color: #f2f3f4;
+}
+.sidebar {
+  grid-area: sidebar;
+  background-color: #e4e5e6;
+}
+.footer {
+  grid-area: footer;
+  background-color: #d4d5d6;
+}
