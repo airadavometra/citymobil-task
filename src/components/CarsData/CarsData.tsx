@@ -9,12 +9,12 @@ export interface CarsDataProps {
 export const CarsData: FunctionComponent<CarsDataProps> = ({ className }) => {
   return (
     <div className={classNames(className, "carsData")}>
-      <div className="filterSection">
+      <section className="filterSection">
         <input className="searchInput" type="text" placeholder="Поиск" />
         <button className="searchButton">Найти</button>
-      </div>
-      <div className="tableSection"></div>
-      <div className="selectionSection"></div>
+      </section>
+      <section className="tableSection"></section>
+      <section className="selectionSection"></section>
     </div>
   );
 };
