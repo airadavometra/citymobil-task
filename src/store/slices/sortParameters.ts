@@ -6,7 +6,7 @@ interface State {
 }
 
 const initialState: State = {
-  key: "",
+  key: "name",
   isAscending: true,
 };
 

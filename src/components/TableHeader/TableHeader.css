@@ -1,0 +1,5 @@
+.tableHead {
+  position: sticky;
+  top: -1px;
+  background: #f0f2f4;
+}

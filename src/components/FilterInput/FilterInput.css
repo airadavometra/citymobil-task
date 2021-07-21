@@ -1,0 +1,23 @@
+.filterSection {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+}
+.searchButton {
+  margin-left: 8px;
+  padding: 13px 65px;
+  color: white;
+  background-color: #7b8395;
+  border: none;
+}
+.searchInput {
+  padding-left: 40px;
+  flex-grow: 1;
+  border: 1px solid #dee5eb;
+  background-image: url(/src/icons/search.svg);
+  background-position: 13px center;
+  background-repeat: no-repeat;
+}
+.searchInput::placeholder {
+  color: #7b8395;
+}

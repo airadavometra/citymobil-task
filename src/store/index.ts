@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { sortReducer } from "./slices";
+import { sortReducer } from "./slices/sortParameters";
 import { carsReducer } from "./slices/cars";
 import { filterReducer } from "./slices/filter";
 

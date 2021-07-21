@@ -1,0 +1,22 @@
+.selectionSection {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #dee5eb;
+  font-weight: 600;
+}
+.tableSection {
+  flex-grow: 1;
+  overflow: auto;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #c6d1dd;
+}
+.tableCell {
+  padding: 16px;
+  border: 1px solid #c6d1dd;
+}
+.tableBodyCell {
+  color: #2d303b;
+}
